@@ -1,39 +1,41 @@
 package fr.philippe.dev;
 
-import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Test {
 
 	public static void main(String[] args) {
 		Properties properties = new Properties();
-		OutputStream out = null;
+		InputStream in = null;
 		
-		try {
-			out = new FileOutputStream("config.properties");
-
-			properties.setProperty("driver", "mysql");
-			properties.setProperty("database", "localhost");
-			properties.setProperty("port", "3306");
-			properties.setProperty("user", "root");
-			properties.setProperty("password", "12345");
-		
-			properties.store(out, null);
+		try
+		{
+			in = new FileInputStream("ressources/config.properties");
+			
+			properties.load(in);
+			
+			System.out.print(properties.getProperty("contact.nom"));
+			System.out.printf(" %s", properties.getProperty("contact.prenom"));
 		}
-		catch (Exception e) {
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
-		finally {
-			if (out != null)
+		finally
+		{
+			if (in != null)
 			{
-				try {
-					out.close();
-					out = null;
+				try 
+				{
+					in.close();
+					in = null;
 				}
-				catch (IOException i) {
-					i.printStackTrace();
+				catch (IOException io)
+				{
+					io.printStackTrace();
 				}
 			}
 		}
