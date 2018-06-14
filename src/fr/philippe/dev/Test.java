@@ -5,11 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
 public class Test {
 
+	private static final Logger logger = Logger.getLogger(Test.class);
+	
 	public static void main(String[] args) {
 		Properties properties = new Properties();
 		InputStream in = null;
+		
+		logger.info("test info ;) ");
 		
 		try
 		{
@@ -39,5 +45,7 @@ public class Test {
 				}
 			}
 		}
+		
+		
 	}
 }
