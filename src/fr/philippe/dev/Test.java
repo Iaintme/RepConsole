@@ -9,13 +9,15 @@ import org.apache.log4j.Logger;
 
 public class Test {
 
-	private static final Logger logger = Logger.getLogger(Test.class);
+	
 	
 	public static void main(String[] args) {
 		Properties properties = new Properties();
 		InputStream in = null;
 		
-		logger.info("test info ;) ");
+		final Logger logger = Logger.getLogger(Test.class);
+		
+		logger.info("test info ;)");
 		
 		try
 		{
@@ -28,7 +30,7 @@ public class Test {
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			logger.debug(e.getMessage());
 		}
 		finally
 		{
